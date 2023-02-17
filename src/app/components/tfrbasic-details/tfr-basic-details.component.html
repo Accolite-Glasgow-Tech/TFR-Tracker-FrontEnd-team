@@ -1,0 +1,88 @@
+<div class="basic-details-div">
+  <div class="intro-div">
+    <label>Fill in the basic details for this project.</label>
+  </div>
+  <br />
+  <form [formGroup]="tfrDetails">
+    <div class="container">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="tfrDetails.get('name')?.invalid"
+          >Invalid name</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Start and End date of project</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            class="small-text"
+            matStartDate
+            formControlName="start_date"
+            placeholder="Start date"
+          />
+          <input
+            class="small-text"
+            matEndDate
+            formControlName="end_date"
+            placeholder="End date"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="tfrDetails.get('end_date')?.invalid"
+          >Invalid start date</mat-error
+        >
+        <mat-error *ngIf="tfrDetails.get('start_date')?.invalid"
+          >Invalid end date</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <app-clients
+      (onSelected)="onClientSelect($event)"
+      (onAttributesUpdated)="onAttributesUpdated($event)"
+      (attributesSelected)="onAttributesSelected($event)"
+      [editMode]="editMode"
+      [existingDetails]="projectToEdit"
+    ></app-clients>
+  </form>
+</div>
+
+<div class="floating-btn-div">
+  <button
+    mat-raised-button
+    [disabled]="!isFormDirty()"
+    class="navigation-btn"
+    color="primary"
+    (click)="saveTFR()"
+  >
+    Save
+  </button>
+  <button
+    mat-raised-button
+    [disabled]="
+      !((this.clientGroup && this.clientGroup.dirty) || this.tfrDetails.dirty)
+    "
+    class="navigation-btn"
+    (click)="resetInputFields()"
+  >
+    Reset
+  </button>
+  <button
+    mat-raised-button
+    [disabled]="
+      !(isFormValid() && this.tfrManager.project && previousUpdateSuccessful)
+    "
+    class="navigation-btn"
+    color="primary"
+    (click)="next()"
+  >
+    Next
+  </button>
+</div>
+
+<br />
+<br />
+<br />

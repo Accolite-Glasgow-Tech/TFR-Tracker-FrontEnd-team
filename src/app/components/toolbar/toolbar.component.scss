@@ -1,0 +1,56 @@
+@import "../../../variables";
+
+@media all and (min-device-width: 800px) and (-webkit-min-device-pixel-ratio: 1) {
+  .heading {
+    color: white;
+    font-size: 3vw;
+  }
+}
+
+@media all and (max-device-width: 799px) and (-webkit-min-device-pixel-ratio: 1) {
+  .heading {
+    color: white;
+    font-size: 6vw;
+  }
+}
+
+.acc-tfr {
+  font-size: 100%;
+}
+
+div {
+  overflow: inherit;
+}
+
+a {
+  text-decoration: none;
+  font-size: 110%;
+  white-space: normal;
+}
+
+button {
+  font-size: 110%;
+  min-width: min-content;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content {
+  font-size: 200%;
+  text-align: center;
+}
+
+.active-route {
+  background: $secondary;
+  border-radius: 15px;
+}
+
+.toolbar {
+  background-color: $primary;
+}

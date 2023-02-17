@@ -1,0 +1,106 @@
+<div>
+  <div class="row">
+    <div class="LHS-details column">
+      <div class="project-details">
+        <span>
+          <strong>Project Name: </strong> {{ currentProject?.name }}
+        </span>
+      </div>
+
+      <div class="project-details">
+        <span
+          ><strong>Start Date: </strong>
+          {{
+            dateFormatterService.getShortDisplayDate(currentProject?.start_date)
+          }}</span
+        >
+      </div>
+
+      <div class="project-details">
+        <span>
+          <strong>End Date: </strong>
+          {{
+            dateFormatterService.getShortDisplayDate(currentProject?.end_date)
+          }}
+        </span>
+      </div>
+
+      <div class="project-details">
+        <span> <strong>Version: </strong> {{ currentProject?.version }} </span>
+      </div>
+
+      <div class="project-details">
+        <span
+          [ngClass]="{
+            delivered: currentProject?.status == 'DELIVERED',
+            inprogress: currentProject?.status == 'IN PROGRESS',
+            agreed: currentProject?.status == 'AGREED',
+            archived: currentProject?.status == 'ARCHIVED',
+            draft: currentProject?.status == 'DRAFT'
+          }"
+        >
+          <strong style="color: black">Status: </strong>
+          {{ currentProject?.status }}
+        </span>
+      </div>
+    </div>
+
+    <div class="column" id="client-div">
+      <div class="project-details">
+        <span> <strong>Client: </strong> {{ clientName }} </span>
+      </div>
+      <div
+        class="project-details"
+        *ngFor="
+          let client_attribute of this.currentProject?.client_specific
+            | keyvalue
+        "
+      >
+        <span>
+          <strong>{{ client_attribute.key }}: </strong>
+          {{ client_attribute.value }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-details table-div">
+    <span>
+      <strong>Milestones: </strong>
+      <mat-error *ngIf="currentProject?.milestones?.length === 0">
+        No milestones created.
+      </mat-error>
+    </span>
+
+    <ng-container *ngIf="currentProject?.milestones?.length !== 0">
+      <br />
+      <app-milestone-table
+        [milestones]="currentProjectMilestones"
+      ></app-milestone-table>
+      <br />
+    </ng-container>
+  </div>
+
+  <div class="project-details table-div">
+    <span>
+      <strong>Resources: </strong>
+      <mat-error *ngIf="currentProject?.project_resources?.length === 0">
+        No resources assigned.
+      </mat-error>
+    </span>
+    <ng-container *ngIf="currentProject?.project_resources?.length !== 0">
+      <br />
+
+      <app-resource-table
+        [resourcesWithNames]="currentResourcesWithNames"
+        [withDelete]="false"
+      >
+      </app-resource-table>
+    </ng-container>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />

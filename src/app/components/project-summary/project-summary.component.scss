@@ -1,0 +1,60 @@
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+  padding: 20px;
+}
+
+.LHS-details .project-details:first-child {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.LHS-details .project-details:last-child {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.project-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.table-div {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#vendor-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+//When screen becomes smaller
+@media all and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+  .column {
+    flex: 100%;
+  }
+}
+
+// status colours
+.delivered {
+  color: rgb(25, 215, 25);
+}
+.inprogress {
+  color: rgb(221, 156, 0);
+}
+.agreed {
+  color: rgb(221, 156, 0);
+}
+.archived {
+  color: grey;
+}
+.draft {
+  color: red;
+}

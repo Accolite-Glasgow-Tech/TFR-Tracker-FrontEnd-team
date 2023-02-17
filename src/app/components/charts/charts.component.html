@@ -1,0 +1,23 @@
+<mat-card
+  *ngIf="!serverup"
+  style="background-color: transparent; padding: 15px"
+  id="mat1"
+  >hi
+  <h1 class="head" style="align-self: center; color: antiquewhite">
+    Service unavailable. Try again
+  </h1>
+</mat-card>
+
+<mat-card class="chartouter" *ngIf="pieChartData.length > 0">
+  <canvas
+    class="chartinner"
+    baseChart
+    [type]="'pie'"
+    [datasets]="pieChartData"
+    [labels]="pieChartLabels"
+    [options]="pieChartOptions"
+    [legend]="true"
+    (chartClick)="onChartClick($event)"
+  >
+  </canvas>
+</mat-card>

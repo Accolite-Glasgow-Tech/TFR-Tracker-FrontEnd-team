@@ -1,0 +1,49 @@
+.demo-table {
+  width: 100%;
+}
+
+.data-cell,
+.data-cell-mobile {
+  padding-left: 15px;
+  text-align: center;
+  word-break: break-all;
+}
+
+.data-cell-mobile {
+  font-size: 12px;
+}
+
+.data-cell-div-container-mobile {
+  text-align: center;
+  margin: 10px;
+}
+
+.data-cell-div-mobile {
+  text-align: justify;
+}
+
+@media only screen and (min-width: 480px) {
+  .table-resource-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .table-resource-laptop {
+    display: none;
+  }
+}
+
+// status colours
+.approved {
+  color: rgb(25, 215, 25);
+}
+.inprogress {
+  color: rgb(221, 156, 0);
+}
+.pending_review {
+  color: rgb(221, 156, 0);
+}
+.intent {
+  color: red;
+}

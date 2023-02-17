@@ -1,0 +1,61 @@
+<div class="flexContainer justified-center">
+  <form
+    class="margined flexContainer"
+    id="form"
+    [formGroup]="schedulerForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div>
+      <mat-form-field
+        class="margined justified-left fixed-width-full"
+        appearance="outline"
+        ><mat-label>Select Template</mat-label>
+        <mat-select formControlName="type">
+          <mat-option [value]="template"> {{ template }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <app-frequency-picker></app-frequency-picker>
+    </div>
+    <div class="margined justified-left">
+      <label class="formLabel">{{ receiverLabelText }}</label>
+      <mat-radio-group class="recipientsRadioGroup" formControlName="receiver">
+        <mat-radio-button
+          class="margined justified-left"
+          [color]="'primary'"
+          [value]="recieverOptionsEnum.self"
+          [disabled]="true"
+        >
+          {{ recieverOptionsEnum.self }}
+        </mat-radio-button>
+        <mat-radio-button
+          class="margined justified-left"
+          [color]="'primary'"
+          [value]="recieverOptionsEnum.allProjectResources"
+        >
+          {{ recieverOptionsEnum.allProjectResources }}
+        </mat-radio-button>
+        <mat-radio-button
+          class="margined justified-left"
+          [color]="'primary'"
+          [value]="recieverOptionsEnum.custom"
+          [disabled]="true"
+        >
+          {{ recieverOptionsEnum.custom }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <button
+      class="submit margined"
+      type="submit"
+      [disabled]="!schedulerForm.valid"
+      mat-raised-button
+      color="primary"
+    >
+      Schedule
+    </button>
+  </form>
+</div>
